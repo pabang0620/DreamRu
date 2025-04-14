@@ -29,6 +29,8 @@
 .cards-scroll-area {
   padding-bottom: 8px;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+
 }
 
 .cards-grid-3rows {
@@ -42,7 +44,7 @@
 .card {
   aspect-ratio: 2/3;
   background: linear-gradient(45deg, #2a2a4a, #1a1a2e);
-  border: 2px solid #3a3a5a;
+  border: 1.5px solid #3a3a5a;
   border-radius: 6px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -59,10 +61,7 @@
   transform: scale(1.05);
 }
 
-.card.selected {
-  opacity: 0.3;
-  pointer-events: none;
-}
+
 
 .selected-cards-section {
   margin-top: 32px;
@@ -79,7 +78,6 @@
   flex: 0 0 auto;
   width: 80px;
   animation: fadeIn 0.3s ease-out;
-  
 }
 
 .selected-card h4 {
@@ -279,47 +277,68 @@
 }
 
 
+.card.selected {
+  opacity: 0.3;
+  pointer-events: none; /* 마우스 이벤트 방지 (예비용) */
+  transform: scale(0.95);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
 
 /* 파도타기  */
 .card.ripple {
   animation-name: rippleWobble;
   animation-duration: 2s;
   animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-@keyframes rippleWobble {
+/* @keyframes rippleWobble {
   0% {
     box-shadow: 0 0 0 rgba(174, 129, 255, 0);
   }
   50% {
-    box-shadow: 0 0 3px rgb(72, 19, 170); /* 연보라빛 Glow */
+   
+    box-shadow: 0 0 3px rgb(72, 19, 170);
   }
   100% {
     box-shadow: 0 0 0 rgba(174, 129, 255, 0);
   }
+} */
+
+@keyframes rippleWobble {
+  0% {
+    box-shadow: 0 0 0 rgba(216, 164, 84, 0); /* #d8a454 투명도 0 */
+  }
+  50% {
+    box-shadow: 0 0 2px #d8a454; /* 중심 색상 */
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(216, 164, 84, 0); /* 다시 투명 */
+  }
 }
+
 /* 탭바  */
-.tab-bar {
+.dot-indicator {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin: 12px 0;
+  gap: 6px;
+  margin: 16px 0;
 }
 
-.tab-button {
-  padding: 6px 12px;
-  border: 1px solid #555;
-  background-color: #2a2a4a;
-  color: white;
-  cursor: pointer;
-  border-radius: 4px;
+.dot {
+  width: 6px;   /* 기존의 절반 크기 */
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);  /* 더 투명하게 */
+  transition: all 0.3s ease;
 }
 
-.tab-button.active {
-  background-color: #6c5ce7;
-  font-weight: bold;
+.dot.active {
+  background-color: rgba(165, 140, 241, 0.8); /* 연보라 강조 */
+  transform: scale(1.3);
 }
+
+
 
 /* 탭변환시 페이드인 */
 
