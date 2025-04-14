@@ -1,0 +1,67 @@
+.tarot-list-container {
+  padding: var(--spacing-md);
+}
+
+.tarot-title {
+  font-size: var(--font-xl);
+  font-weight: bold;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.tarot-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.tarot-product-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.tarot-product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--gray-light);
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-xl);
+  color: var(--gray-dark);
+}
+
+.product-info {
+  padding: var(--spacing-md);
+}
+
+.product-info h2 {
+  font-size: var(--font-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.price {
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: var(--font-md);
+}

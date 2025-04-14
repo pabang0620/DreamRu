@@ -1,0 +1,315 @@
+.tarot-reading-container {
+  padding: var(--spacing-md);
+  min-height: 100vh;
+  background-color: #1a1a2e;
+  color: var(--white);
+}
+
+.reading-header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.reading-header h1 {
+  font-size: var(--font-xl);
+  color: #e2e2e2;
+}
+
+.instruction {
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.sub-text {
+  color: #aaa;
+  font-size: var(--font-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.cards-scroll-area {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cards-grid-3rows {
+  display: grid;
+  grid-template-columns: repeat(26, 72px);
+  grid-template-rows: repeat(3, 120px);
+  gap: 8px;
+  padding: 12px;
+  width: max-content;
+}
+
+.card {
+  aspect-ratio: 2/3;
+  background: linear-gradient(45deg, #2a2a4a, #1a1a2e);
+  border: 2px solid #3a3a5a;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  position: relative;/* dd*/
+  border-radius: 6px;
+  z-index: 1;
+  overflow: hidden;
+}
+
+
+
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.selected {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.selected-cards-section {
+  margin-top: 32px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+}
+
+.selected-card {
+  text-align: center;
+  flex: 0 0 auto;
+  width: 80px;
+}
+
+.selected-card h4 {
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #e2e2e2;
+}
+
+.selected-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .cards-scroll-area {
+    max-width: 100%;
+  }
+}
+
+.cards-scroll-area::-webkit-scrollbar {
+  height: 6px;
+}
+
+.cards-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cards-scroll-area::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15); /* 은은한 흰색 */
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.cards-scroll-area:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.35); /* hover 시 살짝 밝게 */
+}
+
+
+
+/* 중앙 카드 애니메이션 */
+.screen-glow-effect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    circle at center,
+    rgba(174, 129, 255, 0.3),
+    rgba(99, 173, 255, 0) 70%
+  );
+  animation: shimmer-pulse 3s ease-in-out forwards;
+  z-index: 998;
+  pointer-events: none;
+  box-shadow: 0 0 60px 30px rgba(174, 129, 255, 0.15);
+}
+
+
+@keyframes shimmer-pulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  30% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 0.25;
+    transform: scale(1.05);
+  }
+  90% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+
+
+
+.card-animate-flip {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  perspective: 1000px;
+  transition: border 0.5s ease-in-out;
+  border: 3px solid transparent;
+}
+
+.card-animate-flip .card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotateYFlip 0.8s ease-in-out forwards 0.4s;
+}
+
+@keyframes rotateYFlip {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+
+.card-animate-flip .card-inner.flipped {
+  animation: rotate-flip 1s ease forwards 0.3s;
+}
+
+@keyframes scale-and-flip {
+  0% {
+    transform: scale(0.5);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rotate-flip {
+  0% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+
+.card-animate-flip .card-front,
+.card-animate-flip .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: var(--border-radius-sm);
+}
+
+.card-animate-flip .card-front {
+  background: linear-gradient(45deg, #2a2a4a, #1a1a2e);
+  border: 2px solid #3a3a5a;
+}
+
+.card-animate-flip .card-back {
+  transform: rotateY(180deg);
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+.card-animate-flip .card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+/* 사라질때 이벤트효과 */
+.card-animate-flip {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  perspective: 1000px;
+  transition: border 0.5s ease-in-out;
+  border: 3px solid transparent;
+}
+
+.card-animate-flip.card-exit-magic {
+  animation: gold-border-and-disappear 0.5s forwards;
+}
+
+@keyframes gold-border-and-disappear {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 3px 2px rgba(138, 43, 226, 0.5); /* 퍼지는 청보라 Glow */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    box-shadow: 0 0 10px 10px rgba(138, 43, 226, 0); /* 깔끔히 사라짐 */
+  }
+}
+
+.result-message {
+  text-align: center;
+  margin-top: 20px;
+  color: #d8b4fe; /* 보라빛 톤 */
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+
+@keyframes rippleWobble {
+  0% {
+    box-shadow: 0 0 0 rgba(174, 129, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 3px rgb(72, 19, 170); /* 연보라빛 Glow */
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(174, 129, 255, 0);
+  }
+}

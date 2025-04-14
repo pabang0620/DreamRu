@@ -1,0 +1,86 @@
+.consultation-container {
+  padding-bottom: var(--spacing-xl);
+}
+
+.consultation-header {
+  margin: -var(--spacing-md) -var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  text-align: center;
+}
+
+.consultation-header h1 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.consultation-description {
+  font-size: var(--font-sm);
+  opacity: 0.9;
+}
+
+.consultation-types {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.consultation-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.consultation-card-header {
+  padding: var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.consultation-card-content {
+  padding: var(--spacing-md);
+}
+
+.consultation-features {
+  margin: var(--spacing-md) 0;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  color: var(--gray-dark);
+}
+
+.feature-icon {
+  color: var(--primary-color);
+}
+
+.consultation-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md);
+  background-color: var(--gray-light);
+  border-radius: 0 0 var(--border-radius-md) var(--border-radius-md);
+}
+
+.price-amount {
+  font-size: var(--font-lg);
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.consultation-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.consultation-button:hover {
+  background-color: var(--secondary-color);
+}
