@@ -6,6 +6,9 @@ const TarotReading = () => {
   const location = useLocation();
   const { product } = location.state || {};
 
+  const [currentPage, setCurrentPage] = useState(0); // 페이지 번호 (0부터 시작)
+  const cardsPerPage = 12; // ← 기존 15에서 12로 수정
+
   const [cards, setCards] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
   const [randomCards, setRandomCards] = useState([]);
@@ -87,35 +90,42 @@ const TarotReading = () => {
         </div>
       )}
 
+      <div className="tab-bar">
+        {Array.from({ length: Math.ceil(cards.length / cardsPerPage) }, (_, index) => (
+          <button
+            key={index}
+            className={`tab-button ${currentPage === index ? 'active' : ''}`}
+            onClick={() => setCurrentPage(index)}
+          >
+            {index + 1}
+          </button>
+        ))}
+      </div>
 
       <div className="cards-scroll-area">
         <div className="cards-grid-3rows">
-          {cards.map((card, idx) => {
-            const rowIndex = Math.floor(idx / 26);
-            const colIndex = idx % 26;
-            const delay = (rowIndex + colIndex) * 100; // 대각선 기준 딜레이
-
-            const isSelected = selectedCards.includes(card.id);
-
-            return (
-              <div
-                key={card.id}
-                className={`card ${isSelected ? 'selected' : ''}`}
-                onClick={() => handleCardClick(card.id)}
-                style={{
-                  animation: !isSelected ? 'rippleWobble 3s ease-in-out infinite' : undefined,
-                  animationDelay: `${delay}ms`,
-                }}
-
-              >
-                <div className="card-inner">
-                  <div className="card-front" />
-                </div>
-              </div>
-            );
-          })}
+        {cards
+  .slice(currentPage * cardsPerPage, (currentPage + 1) * cardsPerPage)
+  .map((card, index) => {
+    const isSelected = selectedCards.includes(card.id);
+    const delay = index * 0.1; // 각 카드마다 0.1초씩 딜레이
+    return (
+      <div
+        key={card.id}
+        className={`card ${isSelected ? 'selected' : 'ripple'}`}
+        onClick={() => handleCardClick(card.id)}
+        style={{ animationDelay: `${delay}s` }}
+      >
+        <div className="card-inner">
+          <div className="card-front" />
+        </div>
+      </div>
+    );
+  })}
 
         </div>
+
+
       </div>
       {animatingCard && !startExitMotion && (
         <div className="screen-glow-effect" />

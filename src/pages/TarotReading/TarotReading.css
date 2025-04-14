@@ -27,19 +27,17 @@
 }
 
 .cards-scroll-area {
-  overflow-x: auto;
   padding-bottom: 8px;
   -webkit-overflow-scrolling: touch;
 }
 
 .cards-grid-3rows {
   display: grid;
-  grid-template-columns: repeat(26, 72px);
-  grid-template-rows: repeat(3, 120px);
-  gap: 8px;
-  padding: 12px;
-  width: max-content;
+  grid-template-columns: repeat(4, 1fr); /* 한 줄에 4개 */
+  gap: 20px 12px;
+  justify-content: center;
 }
+
 
 .card {
   aspect-ratio: 2/3;
@@ -97,29 +95,6 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
-@media (min-width: 768px) {
-  .cards-scroll-area {
-    max-width: 100%;
-  }
-}
-rotateYFlip 
-.cards-scroll-area::-webkit-scrollbar {
-  height: 6px;
-}
-
-.cards-scroll-area::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.cards-scroll-area::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.15); /* 은은한 흰색 */
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.cards-scroll-area:hover::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.35); /* hover 시 살짝 밝게 */
-}
 
 
 
@@ -304,6 +279,15 @@ rotateYFlip
 }
 
 
+
+/* 파도타기  */
+.card.ripple {
+  animation-name: rippleWobble;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
 @keyframes rippleWobble {
   0% {
     box-shadow: 0 0 0 rgba(174, 129, 255, 0);
@@ -315,3 +299,25 @@ rotateYFlip
     box-shadow: 0 0 0 rgba(174, 129, 255, 0);
   }
 }
+/* 탭바  */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.tab-button {
+  padding: 6px 12px;
+  border: 1px solid #555;
+  background-color: #2a2a4a;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.tab-button.active {
+  background-color: #6c5ce7;
+  font-weight: bold;
+}
+
