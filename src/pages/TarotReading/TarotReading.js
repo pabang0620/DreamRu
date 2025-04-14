@@ -4,7 +4,7 @@ import './TarotReading.css';
 
 const TarotReading = () => {
   const location = useLocation();
-  const { product, customerName } = location.state || {};
+  const { product } = location.state || {};
 
   const [cards, setCards] = useState([]);
   const [selectedCards, setSelectedCards] = useState([]);
@@ -29,7 +29,7 @@ const TarotReading = () => {
 
   const handleCardClick = (cardId) => {
     if (selectedCards.includes(cardId) || selectedCards.length >= 3 || animatingCard !== null) return;
-
+    console.log(animatingCard)
     const randomNumber = Math.floor(Math.random() * 78) + 1;
     const selected = {
       id: cardId,
@@ -43,16 +43,17 @@ const TarotReading = () => {
   useEffect(() => {
     if (!animatingCard) return;
 
+    setSelectedCards(prev => [...prev, animatingCard.id]);
     const exitDelay = setTimeout(() => {
       setStartExitMotion(true);
-    }, 2500);
+
+    }, 1500);
 
     const cleanup = setTimeout(() => {
-      setSelectedCards(prev => [...prev, animatingCard.id]);
       setRandomCards(prev => [...prev, animatingCard]);
       setAnimatingCard(null);
       setStartExitMotion(false);
-    }, 3000);
+    }, 2200);
 
     return () => {
       clearTimeout(exitDelay);
@@ -62,7 +63,7 @@ const TarotReading = () => {
 
 
 
-  if (!product || !customerName) {
+  if (!product) {
     return <div>잘못된 접근입니다.</div>;
   }
 
@@ -71,7 +72,7 @@ const TarotReading = () => {
     <div className="tarot-reading-container">
       <div className="reading-header">
         <h1>{product.title}</h1>
-        <p>{customerName}님의 타로 리딩</p>
+        <p>연애 타로 리딩</p>
       </div>
 
       {selectedCards.length < 3 ? (
@@ -89,30 +90,30 @@ const TarotReading = () => {
 
       <div className="cards-scroll-area">
         <div className="cards-grid-3rows">
-        {cards.map((card, idx) => {
-  const rowIndex = Math.floor(idx / 26);
-  const colIndex = idx % 26;
-  const delay = (rowIndex + colIndex) * 100; // 대각선 기준 딜레이
+          {cards.map((card, idx) => {
+            const rowIndex = Math.floor(idx / 26);
+            const colIndex = idx % 26;
+            const delay = (rowIndex + colIndex) * 100; // 대각선 기준 딜레이
 
-  const isSelected = selectedCards.includes(card.id);
+            const isSelected = selectedCards.includes(card.id);
 
-  return (
-    <div
-      key={card.id}
-      className={`card ${isSelected ? 'selected' : ''}`}
-      onClick={() => handleCardClick(card.id)}
-      style={{
-        animation: !isSelected ? 'rippleWobble 3s ease-in-out infinite' : undefined,
-        animationDelay: `${delay}ms`,
-      }}
-      
-    >
-      <div className="card-inner">
-        <div className="card-front" />
-      </div>
-    </div>
-  );
-})}
+            return (
+              <div
+                key={card.id}
+                className={`card ${isSelected ? 'selected' : ''}`}
+                onClick={() => handleCardClick(card.id)}
+                style={{
+                  animation: !isSelected ? 'rippleWobble 3s ease-in-out infinite' : undefined,
+                  animationDelay: `${delay}ms`,
+                }}
+
+              >
+                <div className="card-inner">
+                  <div className="card-front" />
+                </div>
+              </div>
+            );
+          })}
 
         </div>
       </div>

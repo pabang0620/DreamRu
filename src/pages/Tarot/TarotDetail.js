@@ -6,26 +6,17 @@ const TarotDetail = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { product } = location.state || {};
-  const [name, setName] = useState('');
-  const [showNameInput, setShowNameInput] = useState(false);
+
 
   const handleStart = () => {
-    setShowNameInput(true);
+    navigate(`/tarot-reading/${product.id}`, {
+      state: { 
+        product
+      }
+    });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (name.trim()) {
-      // 결제 페이지로 이동
-      navigate('/payment', {
-        state: {
-          product,
-          customerName: name,
-          type: 'tarot'
-        }
-      });
-    }
-  };
+
 
   if (!product) {
     return <div>상품을 찾을 수 없습니다.</div>;
@@ -58,28 +49,9 @@ const TarotDetail = () => {
         </ul>
       </div>
 
-      {!showNameInput ? (
-        <button className="start-button" onClick={handleStart}>
-          시작하기
-        </button>
-      ) : (
-        <form className="name-input-form" onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="name">이름</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="이름을 입력해주세요"
-              required
-            />
-          </div>
-          <button type="submit" className="next-button">
-            다음
-          </button>
-        </form>
-      )}
+      <button className="start-button" onClick={handleStart}>
+        시작하기
+      </button>
     </div>
   );
 };
