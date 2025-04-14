@@ -321,3 +321,23 @@
   font-weight: bold;
 }
 
+/* 탭변환시 페이드인 */
+
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card.fade-in {
+  opacity: 0; /* 초기 상태 */
+  animation-name: fadeInCard;
+  animation-duration: 0.6s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);
+}

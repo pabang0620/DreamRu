@@ -10,6 +10,7 @@ const TarotReading = () => {
   const cardsPerPage = 12; // ← 기존 15에서 12로 수정
 
   const [cards, setCards] = useState([]);
+  const [fadeKey, setFadeKey] = useState(0);
   const [selectedCards, setSelectedCards] = useState([]);
   const [randomCards, setRandomCards] = useState([]);
   const [animatingCard, setAnimatingCard] = useState(null); // 중앙 확대/뒤집기 중인 카드 ID
@@ -95,33 +96,38 @@ const TarotReading = () => {
           <button
             key={index}
             className={`tab-button ${currentPage === index ? 'active' : ''}`}
-            onClick={() => setCurrentPage(index)}
+            onClick={() => {
+              setCurrentPage(index);
+              setFadeKey((prev) => prev + 1); // 페이드 트리거
+            }}
           >
             {index + 1}
           </button>
+
         ))}
       </div>
 
       <div className="cards-scroll-area">
-        <div className="cards-grid-3rows">
-        {cards
-  .slice(currentPage * cardsPerPage, (currentPage + 1) * cardsPerPage)
-  .map((card, index) => {
-    const isSelected = selectedCards.includes(card.id);
-    const delay = index * 0.1; // 각 카드마다 0.1초씩 딜레이
-    return (
-      <div
-        key={card.id}
-        className={`card ${isSelected ? 'selected' : 'ripple'}`}
-        onClick={() => handleCardClick(card.id)}
-        style={{ animationDelay: `${delay}s` }}
-      >
-        <div className="card-inner">
-          <div className="card-front" />
-        </div>
-      </div>
-    );
-  })}
+        <div key={currentPage} className="cards-grid-3rows">
+          {cards
+            .slice(currentPage * cardsPerPage, (currentPage + 1) * cardsPerPage)
+            .map((card, index) => {
+              const isSelected = selectedCards.includes(card.id);
+              const delay = index * 0.08; // 0.05초 간격으로 순차 딜레이
+
+              return (
+                <div
+                  key={card.id}
+                  className={`card ${isSelected ? 'selected' : ''} fade-in`}
+                  onClick={() => handleCardClick(card.id)}
+                  style={{ animationDelay: `${delay}s` }}
+                >
+                  <div className="card-inner">
+                    <div className="card-front" />
+                  </div>
+                </div>
+              );
+            })}
 
         </div>
 
