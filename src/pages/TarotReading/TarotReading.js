@@ -24,10 +24,27 @@ const TarotReading = ({ cardColor }) => {
   ];
 
   useEffect(() => {
-    const newCards = Array.from({ length: 78 }, (_, index) => ({
-      id: index + 1,
+    // Major Arcana (0~21)
+    const majorCards = Array.from({ length: 22 }, (_, index) => ({
+      id: `major-${index}`,
+      image: `${process.env.PUBLIC_URL}/Images/taro/major/${index}.png`,
     }));
-    setCards(newCards);
+
+    // Minor Arcana (Cups, Pentacles, Swords, Winds)
+    const suits = ["cups", "pentacles", "swords", "winds"];
+    const minorCards = suits.flatMap((suit) =>
+      Array.from({ length: 14 }, (_, index) => ({
+        id: `minor-${suit}-${index + 1}`,
+        image: `${process.env.PUBLIC_URL}/Images/taro/minor/${suit}/${
+          index + 1
+        }.png`,
+      }))
+    );
+
+    // Combine and shuffle cards
+    const allCards = [...majorCards, ...minorCards];
+    const shuffledCards = allCards.sort(() => Math.random() - 0.5);
+    setCards(shuffledCards);
   }, []);
 
   const handleCardClick = (cardId) => {
@@ -37,15 +54,10 @@ const TarotReading = ({ cardColor }) => {
       animatingCard !== null
     )
       return;
-    console.log(animatingCard);
-    const randomNumber = Math.floor(Math.random() * 78) + 1;
-    const selected = {
-      id: cardId,
-      image: `/images/tarot-cards/${randomNumber}.jpg`,
-      backupImage: "https://picsum.photos/300/500",
-    };
 
-    setAnimatingCard(selected); // 선택 카드 정보까지 넘김
+    const selected = cards.find((card) => card.id === cardId);
+
+    setAnimatingCard(selected);
   };
 
   useEffect(() => {
