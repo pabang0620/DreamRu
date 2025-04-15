@@ -1,0 +1,161 @@
+  // mbti 결과 계산식 
+export function calculateMBTIResult(answers, questions) {
+    const scoreMap = {
+      EI: { E: 0, I: 0 },
+      SN: { S: 0, N: 0 },
+      TF: { T: 0, F: 0 },
+      JP: { J: 0, P: 0 },
+    };
+  
+    questions.forEach((q) => {
+      const selected = answers[q.id];
+      if (selected && scoreMap[q.type]) {
+        if (selected === "E" || selected === "I") scoreMap.EI[selected]++;
+        else if (selected === "S" || selected === "N") scoreMap.SN[selected]++;
+        else if (selected === "T" || selected === "F") scoreMap.TF[selected]++;
+        else if (selected === "J" || selected === "P") scoreMap.JP[selected]++;
+      }
+    });
+  
+    const result =
+      (scoreMap.EI.E >= scoreMap.EI.I ? "E" : "I") +
+      (scoreMap.SN.S >= scoreMap.SN.N ? "S" : "N") +
+      (scoreMap.TF.T >= scoreMap.TF.F ? "T" : "F") +
+      (scoreMap.JP.J >= scoreMap.JP.P ? "J" : "P");
+  
+    return result;
+  }
+
+  // mbti 유형 설명
+  export const mbtiDescriptions = {
+    ISTJ: "차분하고 책임감 있는 당신은 늘 묵묵히 주변을 지켜주는 든든한 존재예요. 신뢰받는 관리자 타입이에요.",
+    ISFJ: "따뜻하고 섬세한 마음을 가진 당신은 주변 사람들에게 늘 큰 힘이 되는 조용한 수호자예요.",
+    INFJ: "깊은 통찰력과 공감 능력을 지닌 당신은 사람들의 아픔을 알아보고 다독여주는 따뜻한 조언자입니다.",
+    INTJ: "논리적이고 목표가 뚜렷한 당신은 언제나 큰 그림을 그리고 실행에 옮기는 전략가예요.",
+  
+    ISTP: "침착하면서도 실용적인 사고를 지닌 당신은 복잡한 상황에서도 해법을 찾아내는 유능한 문제 해결사예요.",
+    ISFP: "감성이 풍부하고 조용한 매력을 지닌 당신은 누구보다 따뜻하고 부드러운 예술가예요.",
+    INFP: "이상과 가치에 충실한 당신은 조용하지만 깊은 울림을 주는 아름다운 중재자입니다.",
+    INTP: "탐구심이 많고 이성적인 사고를 즐기는 당신은 세상의 원리를 분석하는 사색가예요.",
+  
+    ESTP: "즉흥적이고 에너지 넘치는 당신은 어떤 상황에서도 기지를 발휘하는 생생한 모험가예요.",
+    ESFP: "밝고 활기찬 분위기로 모두를 즐겁게 해주는 당신은 모두의 무드를 살리는 멋진 연예인 같은 존재예요.",
+    ENFP: "상상력이 풍부하고 열정이 가득한 당신은 언제나 주변에 긍정의 바람을 불어넣는 활동가예요.",
+    ENTP: "호기심 많고 말솜씨가 뛰어난 당신은 세상을 새롭게 바라보는 토론가예요.",
+  
+    ESTJ: "체계적이고 리더십이 뛰어난 당신은 주변을 안정적으로 이끄는 믿음직한 통솔자예요.",
+    ESFJ: "따뜻한 배려와 섬세함을 가진 당신은 늘 사람들을 챙기고 이끄는 따뜻한 리더예요.",
+    ENFJ: "사람을 아끼고 잘 이끄는 당신은 모두의 마음을 어루만지는 따뜻한 지도자예요.",
+    ENTJ: "카리스마와 추진력을 모두 지닌 당신은 강한 의지로 목표를 이루어내는 멋진 리더입니다.",
+  };
+  // mbti 추가 정보
+  export const mbtiExtraInfo = {
+    randomFortunes: [
+      "오늘은 따뜻한 말 한마디가 큰 기회를 만들어줄 거예요.",
+      "작은 실천이 큰 변화를 이끌 수 있어요.",
+      "감사한 마음을 표현하면 좋은 일이 찾아옵니다.",
+      "편안한 대화를 통해 뜻밖의 위로를 받을 수 있어요.",
+      "계획에 충실한 하루가 될 거예요.",
+      "평소보다 감각이 예리해지는 날이에요.",
+      "뜻밖의 칭찬을 받게 될지도 몰라요.",
+      "마음이 가는 대로 움직이면 좋은 결과가 따를 거예요.",
+      "오랜 고민이 실마리를 찾는 하루가 될 수 있어요.",
+      "기분 좋은 우연이 당신을 기다리고 있어요.",
+      "연락이 뜸했던 사람과 다시 이어질 수 있어요.",
+      "정리정돈으로 마음도 환기해보세요.",
+      "차분하게 하루를 정리하면 행운이 들어옵니다.",
+      "자신감 있는 태도가 좋은 인상을 남깁니다.",
+      "좋은 인연이 다가오고 있어요.",
+      "오늘은 선택이 아니라 흐름을 따르는 게 좋아요.",
+      "새로운 취미에 도전하기 좋은 날이에요.",
+      "지금 하는 일이 곧 인정받게 될 거예요.",
+      "말보다 행동이 더 큰 힘을 가집니다.",
+      "기다리던 소식이 들려올 수 있어요.",
+    ],
+  
+    randomWarnings: [
+      "지나치게 걱정하지 마세요. 흐름에 맡기세요.",
+      "무리한 일정은 피하고 여유를 가져보세요.",
+      "감정에 휘둘리지 않도록 주의하세요.",
+      "지나친 완벽주의는 오히려 발목을 잡을 수 있어요.",
+      "즉흥적인 지출은 오늘만큼은 삼가주세요.",
+      "의욕은 좋지만 무리한 시작은 피하는 게 좋아요.",
+      "가까운 사람에게 날카로운 말을 하지 않도록 조심해요.",
+      "비교하지 말고 자신의 페이스를 유지하세요.",
+      "일이 풀리지 않는다고 자책하지 마세요.",
+      "주변 시선을 신경 쓰기보다 자신에게 집중해보세요.",
+      "생각만 하지 말고 한 가지라도 실천해보세요.",
+      "혼자 모든 걸 짊어지지 않아도 괜찮아요.",
+      "지나친 기대는 실망을 부를 수 있어요.",
+      "중요한 결정은 오늘보다는 내일로 미루는 것도 방법이에요.",
+      "충동적인 반응은 오해를 만들 수 있어요.",
+      "감정을 억누르지 말고 부드럽게 표현해보세요.",
+      "남을 탓하기보단 내 마음을 먼저 돌아보세요.",
+      "지나치게 조급해하지 마세요. 시간이 해결할 거예요.",
+      "당신의 속도를 믿으세요. 비교하지 않아도 괜찮아요.",
+      "체력 관리에 조금 더 신경 써야 할 날이에요.",
+    ],
+    goodMatch: {
+      ISTJ: ["ENFJ", "ISFJ"],
+      ISFJ: ["ESFP", "ISTJ"],
+      INFJ: ["ENFP", "INFP"],
+      INTJ: ["ENTP", "INTP"],
+      ISTP: ["ESFP", "ESTP"],
+      ISFP: ["ENFP", "ESFP"],
+      INFP: ["ENFJ", "INFJ"],
+      INTP: ["ENTP", "INTJ"],
+      ESTP: ["ISFP", "ESTJ"],
+      ESFP: ["ISFJ", "ESFJ"],
+      ENFP: ["INFJ", "INFP"],
+      ENTP: ["INTJ", "INFP"],
+      ESTJ: ["ISFJ", "ISTJ"],
+      ESFJ: ["ISFP", "ESFP"],
+      ENFJ: ["INFP", "INFJ"],
+      ENTJ: ["INTP", "ENTP"],
+    }
+    ,
+    badMatch: {
+      ISTJ: ["ENFP", "ESFP"],
+      ISFJ: ["ENTP", "ESTP"],
+      INFJ: ["ESTP", "ESFP"],
+      INTJ: ["ESFP", "ENFP"],
+      ISTP: ["ENFJ", "ESFJ"],
+      ISFP: ["ENTJ", "ESTJ"],
+      INFP: ["ESTJ", "ESTP"],
+      INTP: ["ESFJ", "ISFJ"],
+      ESTP: ["INFJ", "INFP"],
+      ESFP: ["INTJ", "ISTJ"],
+      ENFP: ["ISTJ", "ISFJ"],
+      ENTP: ["ISFJ", "ISFP"],
+      ESTJ: ["INFP", "ISFP"],
+      ESFJ: ["INTP", "ISTP"],
+      ENFJ: ["ISTP", "ISTJ"],
+      ENTJ: ["ISFP", "INFP"],
+    },
+
+    
+  };
+  
+  // -----------------------------------------------------------------------------------------------------------------
+  // ADHD 결과 계산식
+  export function calculateADHDResult(answers, questions) {
+    let totalScore = 0;
+  
+    questions.forEach((q) => {
+      const score = answers[q.id];
+      if (typeof score === "number") {
+        totalScore += score;
+      }
+    });
+  
+    // 간단한 결과 분류 기준 (총점: 0 ~ 36점)
+    if (totalScore >= 24) {
+      return { score: totalScore, level: "높음", message: "ADHD 가능성이 높습니다. 전문가의 상담을 권장합니다." };
+    } else if (totalScore >= 13) {
+      return { score: totalScore, level: "주의", message: "ADHD 경향이 있습니다. 추가 검사를 고려해보세요." };
+    } else {
+      return { score: totalScore, level: "정상", message: "ADHD 징후가 적은 편입니다." };
+    }
+  }
+
+  

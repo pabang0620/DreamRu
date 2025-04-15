@@ -23,6 +23,10 @@ import TarotReading from './pages/TarotReading/TarotReading';
 // Admin Pages
 import AdminConsultants from './pages/Admin/Consultants/AdminConsultants';
 import AdminProducts from './pages/Admin/Products/AdminProducts';
+import Psychology from "./pages/Psychology/Psychology";
+import TestRunner from "./pages/Psychology/TestRunner";
+import MbtiResult from "./pages/Psychology/MbtiResult";
+import ADHDResult from "./pages/Psychology/ADHDResult";
 
 // Font Awesome 라이브러리 설정
 library.add(fas, far);
@@ -39,10 +43,20 @@ function App() {
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="fortune" element={<Fortune />} />
+
+          {/* 타로  */}
           <Route path="tarot" element={<TarotList />} />
           <Route path="tarot/:id" element={<TarotDetail />} />
-          <Route path="payment" element={<Payment />} />
           <Route path="tarot-reading/:id" element={<TarotReading />} />
+
+          {/* 심리테스트 */}
+          <Route path="/psychology" element={<Psychology />} />
+          <Route path="/psychology/:testId" element={<TestRunner />} />
+          <Route path="/psychology/mbti/result" element={<MbtiResult />} />
+          <Route path="/psychology/adhd/result" element={<ADHDResult />} />
+
+          {/* 결제 */}
+          <Route path="payment" element={<Payment />} />
           <Route path="consultation" element={<Consultation />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="search" element={<Search />} />

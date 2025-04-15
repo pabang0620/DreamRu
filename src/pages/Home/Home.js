@@ -8,10 +8,22 @@ const Home = () => {
   const navigate = useNavigate();
 
   const categories = [
-    { id: 1, name: '사주', icon: faStar, path: '/fortune', color: '#FFD700' },
-    { id: 2, name: '타로', icon: faMoon, path: '/tarot', color: '#9C27B0' },
-    { id: 3, name: '연애상담', icon: faHeart, path: '/consultation', color: '#E91E63' },
-    { id: 4, name: '성격테스트', icon: faUser, path: '/personality-test', color: '#2196F3' }
+    { id: 1, name: "사주", icon: faStar, path: "/fortune", color: "#FFD700" },
+    { id: 2, name: "타로", icon: faMoon, path: "/tarot", color: "#9C27B0" },
+    {
+      id: 3,
+      name: "연애상담",
+      icon: faHeart,
+      path: "/consultation",
+      color: "#E91E63",
+    },
+    {
+      id: 4,
+      name: "심리 테스트",
+      icon: faUser,
+      path: "/psychology",
+      color: "#2196F3",
+    },
   ];
 
   const featuredProducts = [
