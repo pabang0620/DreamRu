@@ -16,44 +16,6 @@ const TarotReading = ({ cardColor }) => {
   const [animatingCard, setAnimatingCard] = useState(null); // 중앙 확대/뒤집기 중인 카드 ID
   const [startExitMotion, setStartExitMotion] = useState(false);
 
-  // 카드 리스트 생성
-  const generateCardList = () => {
-    const list = [];
-
-    // major: 0~21
-    for (let i = 0; i <= 21; i++) {
-      list.push({
-        id: `major-${i}`,
-        type: "major",
-        image: `/Images/taro/major/${i}.png`,
-      });
-    }
-
-    // minor: cups, wands, swords, pentacles (1~14)
-    const suits = ["cups", "wands", "swords", "pentacles"];
-    suits.forEach((suit) => {
-      for (let i = 1; i <= 14; i++) {
-        list.push({
-          id: `${suit}-${i}`,
-          type: "minor",
-          suit,
-          image: `/Images/taro/minor/${suit}/${i}.png`,
-        });
-      }
-    });
-
-    return list;
-  };
-
-  const getRandomCard = () => {
-    const available = cards.filter(
-      (card) => !selectedCards.find((sel) => sel.id === card.id)
-    );
-    if (available.length === 0) return null;
-    const randIndex = Math.floor(Math.random() * available.length);
-    return available[randIndex];
-  };
-
   const questions = [
     "상대방과의 과거를 생각하며 한 장을 골라주세요",
     "상대방과의 현재를 생각하며 한 장을 뽑아주세요",
@@ -68,13 +30,22 @@ const TarotReading = ({ cardColor }) => {
     setCards(newCards);
   }, []);
 
-  const handleCardClick = () => {
-    if (selectedCards.length >= 3 || animatingCard !== null) return;
+  const handleCardClick = (cardId) => {
+    if (
+      selectedCards.includes(cardId) ||
+      selectedCards.length >= 3 ||
+      animatingCard !== null
+    )
+      return;
+    console.log(animatingCard);
+    const randomNumber = Math.floor(Math.random() * 78) + 1;
+    const selected = {
+      id: cardId,
+      image: `/images/tarot-cards/${randomNumber}.jpg`,
+      backupImage: "https://picsum.photos/300/500",
+    };
 
-    const selected = getRandomCard();
-    if (!selected) return;
-
-    setAnimatingCard(selected);
+    setAnimatingCard(selected); // 선택 카드 정보까지 넘김
   };
 
   useEffect(() => {
@@ -148,11 +119,6 @@ const TarotReading = ({ cardColor }) => {
   const backImageSrc = `${process.env.PUBLIC_URL}/Images/tarocard/${
     cardColor || "blue.png"
   }`;
-
-  // 카드 리스트 생성
-  useEffect(() => {
-    setCards(generateCardList());
-  }, []);
 
   if (!product) {
     return <div>잘못된 접근입니다.</div>;
