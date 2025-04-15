@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import './TarotReading.css';
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import "./TarotReading.css";
 
 const TarotReading = ({ cardColor }) => {
   const location = useLocation();
@@ -16,13 +16,50 @@ const TarotReading = ({ cardColor }) => {
   const [animatingCard, setAnimatingCard] = useState(null); // 중앙 확대/뒤집기 중인 카드 ID
   const [startExitMotion, setStartExitMotion] = useState(false);
 
+  // 카드 리스트 생성
+  const generateCardList = () => {
+    const list = [];
+
+    // major: 0~21
+    for (let i = 0; i <= 21; i++) {
+      list.push({
+        id: `major-${i}`,
+        type: "major",
+        image: `/Images/taro/major/${i}.png`,
+      });
+    }
+
+    // minor: cups, wands, swords, pentacles (1~14)
+    const suits = ["cups", "wands", "swords", "pentacles"];
+    suits.forEach((suit) => {
+      for (let i = 1; i <= 14; i++) {
+        list.push({
+          id: `${suit}-${i}`,
+          type: "minor",
+          suit,
+          image: `/Images/taro/minor/${suit}/${i}.png`,
+        });
+      }
+    });
+
+    return list;
+  };
+
+  const getRandomCard = () => {
+    const available = cards.filter(
+      (card) => !selectedCards.find((sel) => sel.id === card.id)
+    );
+    if (available.length === 0) return null;
+    const randIndex = Math.floor(Math.random() * available.length);
+    return available[randIndex];
+  };
+
   const questions = [
     "상대방과의 과거를 생각하며 한 장을 골라주세요",
     "상대방과의 현재를 생각하며 한 장을 뽑아주세요",
     "상대방과의 미래를 생각하며 한 장을 뽑아주세요",
-    "아래의 카드들을 통해 타로 해석을 확인해보세요."
+    "아래의 카드들을 통해 타로 해석을 확인해보세요.",
   ];
-
 
   useEffect(() => {
     const newCards = Array.from({ length: 78 }, (_, index) => ({
@@ -31,31 +68,26 @@ const TarotReading = ({ cardColor }) => {
     setCards(newCards);
   }, []);
 
-  const handleCardClick = (cardId) => {
-    if (selectedCards.includes(cardId) || selectedCards.length >= 3 || animatingCard !== null) return;
-    console.log(animatingCard)
-    const randomNumber = Math.floor(Math.random() * 78) + 1;
-    const selected = {
-      id: cardId,
-      image: `/images/tarot-cards/${randomNumber}.jpg`,
-      backupImage: 'https://picsum.photos/300/500'
-    };
+  const handleCardClick = () => {
+    if (selectedCards.length >= 3 || animatingCard !== null) return;
 
-    setAnimatingCard(selected); // 선택 카드 정보까지 넘김
+    const selected = getRandomCard();
+    if (!selected) return;
+
+    setAnimatingCard(selected);
   };
 
   useEffect(() => {
     if (!animatingCard) return;
 
-    setSelectedCards(prev => [...prev, animatingCard.id]);
+    setSelectedCards((prev) => [...prev, animatingCard.id]);
 
     const exitDelay = setTimeout(() => {
       setStartExitMotion(true);
-
     }, 1500);
 
     const cleanup = setTimeout(() => {
-      setRandomCards(prev => [...prev, animatingCard]);
+      setRandomCards((prev) => [...prev, animatingCard]);
       setAnimatingCard(null);
       setStartExitMotion(false);
     }, 2200);
@@ -67,18 +99,19 @@ const TarotReading = ({ cardColor }) => {
   }, [animatingCard]);
   const [cardAnimations, setCardAnimations] = useState([]);
   const updateFadeInCards = (newPage) => {
-    const newIds = cards.slice(newPage * cardsPerPage, (newPage + 1) * cardsPerPage).map(c => c.id);
+    const newIds = cards
+      .slice(newPage * cardsPerPage, (newPage + 1) * cardsPerPage)
+      .map((c) => c.id);
     const newAnimations = {};
     newIds.forEach((id) => {
-      newAnimations[id] = 'fade-in';
+      newAnimations[id] = "fade-in";
     });
     setCardAnimations(newAnimations);
     setCurrentPage(newPage);
   };
 
-
   useEffect(() => {
-    const scrollArea = document.querySelector('.cards-scroll-area');
+    const scrollArea = document.querySelector(".cards-scroll-area");
 
     let touchStartX = 0;
     let touchEndX = 0;
@@ -102,25 +135,28 @@ const TarotReading = ({ cardColor }) => {
       }
     };
 
-    scrollArea.addEventListener('touchstart', handleTouchStart);
-    scrollArea.addEventListener('touchend', handleTouchEnd);
+    scrollArea.addEventListener("touchstart", handleTouchStart);
+    scrollArea.addEventListener("touchend", handleTouchEnd);
 
     return () => {
-      scrollArea.removeEventListener('touchstart', handleTouchStart);
-      scrollArea.removeEventListener('touchend', handleTouchEnd);
+      scrollArea.removeEventListener("touchstart", handleTouchStart);
+      scrollArea.removeEventListener("touchend", handleTouchEnd);
     };
   }, [cards, currentPage]);
 
-
   // 이미지 경로
-  const backImageSrc = `${process.env.PUBLIC_URL}/Images/tarocard/${cardColor || 'blue.png'}`;
+  const backImageSrc = `${process.env.PUBLIC_URL}/Images/tarocard/${
+    cardColor || "blue.png"
+  }`;
 
-
+  // 카드 리스트 생성
+  useEffect(() => {
+    setCards(generateCardList());
+  }, []);
 
   if (!product) {
     return <div>잘못된 접근입니다.</div>;
   }
-
 
   return (
     <div className="tarot-reading-container">
@@ -137,21 +173,23 @@ const TarotReading = ({ cardColor }) => {
       ) : (
         <div className="instruction result-message">
           <p>세 장의 카드를 모두 선택하셨습니다.</p>
-          <p className="sub-text">이제 아래에 나타난 카드를 통해 타로 리딩을 확인해보세요.</p>
+          <p className="sub-text">
+            이제 아래에 나타난 카드를 통해 타로 리딩을 확인해보세요.
+          </p>
         </div>
       )}
 
       <div className="dot-indicator">
-        {Array.from({ length: Math.ceil(cards.length / cardsPerPage) }, (_, index) => (
-          <span
-            key={index}
-            className={`dot ${currentPage === index ? 'active' : ''}`}
-          />
-        ))}
+        {Array.from(
+          { length: Math.ceil(cards.length / cardsPerPage) },
+          (_, index) => (
+            <span
+              key={index}
+              className={`dot ${currentPage === index ? "active" : ""}`}
+            />
+          )
+        )}
       </div>
-
-
-
 
       <div className="cards-scroll-area">
         <div key={currentPage} className="cards-grid-3rows">
@@ -163,12 +201,19 @@ const TarotReading = ({ cardColor }) => {
               return (
                 <div
                   key={card.id}
-                  className={`card ${isSelected ? 'selected' : cardAnimations[card.id] || 'ripple'}`}
+                  className={`card ${
+                    isSelected
+                      ? "selected"
+                      : cardAnimations[card.id] || "ripple"
+                  }`}
                   onClick={() => handleCardClick(card.id)}
                   style={{ animationDelay: `${delay}s` }}
                   onAnimationEnd={() => {
-                    if (cardAnimations[card.id] === 'fade-in') {
-                      setCardAnimations((prev) => ({ ...prev, [card.id]: 'ripple' }));
+                    if (cardAnimations[card.id] === "fade-in") {
+                      setCardAnimations((prev) => ({
+                        ...prev,
+                        [card.id]: "ripple",
+                      }));
                     }
                   }}
                 >
@@ -177,45 +222,41 @@ const TarotReading = ({ cardColor }) => {
                       src={backImageSrc}
                       alt="타로 카드 뒷면"
                       style={{
-                        width: '100%',
-                        height: '100%',
+                        width: "100%",
+                        height: "100%",
                       }}
                     />
-                    <div className="card-front"/>
+                    <div className="card-front" />
                   </div>
                 </div>
               );
             })}
-
         </div>
-
-
       </div>
       {animatingCard && !startExitMotion && (
         <div className="screen-glow-effect" />
       )}
 
       {animatingCard && (
-        <div className={`card-overlay`}
-        >
-          <div className={`card-animate-flip ${startExitMotion ? 'card-exit-magic' : ''}`}>
-            <div className="card-inner flipped"
-
-
-            >
-              <div className="card-face card-front" >
+        <div className={`card-overlay`}>
+          <div
+            className={`card-animate-flip ${
+              startExitMotion ? "card-exit-magic" : ""
+            }`}
+          >
+            <div className="card-inner flipped">
+              <div className="card-face card-front">
                 <img
                   src={backImageSrc}
                   alt="타로 카드 뒷면"
                   style={{
-                    width: '100%',
-                    height: '100%',
+                    width: "100%",
+                    height: "100%",
                   }}
                 />
               </div>
 
-              <div className="card-face card-back"
-              >
+              <div className="card-face card-back">
                 <img
                   src={animatingCard.image}
                   alt="선택 카드"
@@ -226,7 +267,6 @@ const TarotReading = ({ cardColor }) => {
           </div>
         </div>
       )}
-
 
       <div className="selected-cards-section">
         {randomCards.map((card, index) => (
@@ -240,7 +280,6 @@ const TarotReading = ({ cardColor }) => {
           </div>
         ))}
       </div>
-
     </div>
   );
 };
