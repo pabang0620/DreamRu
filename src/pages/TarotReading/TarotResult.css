@@ -1,0 +1,52 @@
+.tarot-result-wrapper {
+    margin-top: 32px;
+    padding: 0 24px;
+    display: grid;
+    gap: 32px;
+    justify-content: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeIn 0.8s ease;
+  }
+  
+  .tarot-result-card {
+    background-color: #2b2b45;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .tarot-result-card h3 {
+    font-size: 14px;
+    color: #d8b4fe;
+    margin-bottom: 8px;
+  }
+  
+  .tarot-result-card img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  }
+  
+  .tarot-result-card h4 {
+    font-size: 16px;
+    color: #ffdd88;
+    margin-bottom: 6px;
+    text-align: center;
+  }
+  
+  .tarot-result-card p {
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
+    line-height: 1.5;
+  }
+  

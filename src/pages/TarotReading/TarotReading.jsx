@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import "./TarotReading.css";
+import TarotResult from "./TarotResult";
 
 const TarotReading = ({ cardColor }) => {
   const location = useLocation();
   const { product } = location.state || {};
+
+  const getReadingType = (product) => {
+    if (!product || !product.title) return "romance"; // 기본값
+    const title = product.title.toLowerCase();
+    if (title.includes("건강")) return "health";
+    if (title.includes("직업") || title.includes("취업")) return "job";
+    if (title.includes("학업") || title.includes("공부")) return "study";
+    if (title.includes("연애")) return "romance";
+    if (title.includes("재물") || title.includes("부")) return "wealth";
+    return "romance"; // fallback
+  };
+
+  const readingType = getReadingType(product);
 
   const [currentPage, setCurrentPage] = useState(0); // 페이지 번호 (0부터 시작)
   const cardsPerPage = 16; // ← 기존 15에서 12로 수정
@@ -30,8 +44,8 @@ const TarotReading = ({ cardColor }) => {
       image: `${process.env.PUBLIC_URL}/Images/taro/major/${index}.png`,
     }));
 
-    // Minor Arcana (Cups, Pentacles, Swords, Winds)
-    const suits = ["cups", "pentacles", "swords", "winds"];
+    // Minor Arcana (Cups, Pentacles, Swords, Wands)
+    const suits = ["cups", "pentacles", "swords", "wands"];
     const minorCards = suits.flatMap((suit) =>
       Array.from({ length: 14 }, (_, index) => ({
         id: `minor-${suit}-${index + 1}`,
@@ -258,6 +272,9 @@ const TarotReading = ({ cardColor }) => {
           </div>
         ))}
       </div>
+      {randomCards.length === 3 && (
+        <TarotResult cards={randomCards} type={readingType} />
+      )}
     </div>
   );
 };
