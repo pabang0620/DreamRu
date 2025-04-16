@@ -4,12 +4,12 @@ import './TopNavBar.css';
 
 const TopNavBar = () => {
   const navItems = [
-    { path: '/', label: '홈' },
-    { path: '/fortune', label: '사주' },
-    { path: '/tarot', label: '타로카드' },
-    { path: '/consultation', label: 'NEW상담' },
-    { path: '/free', label: '무료' },
-    { path: '/sale', label: '할인상품' },
+    { path: "/", label: "홈" },
+    { path: "/fortune", label: "사주" },
+    { path: "/tarot", label: "타로카드" },
+    { path: "/consultation", label: "NEW상담" },
+    { path: "/psychology", label: "심리테스트" },
+    { path: "/sale", label: "할인상품" },
   ];
 
   return (

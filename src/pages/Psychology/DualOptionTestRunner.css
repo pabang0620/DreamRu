@@ -1,0 +1,131 @@
+.dual-test-runner {
+  padding: 24px 16px;
+  max-width: 480px;
+  margin: 0 auto;
+  font-family: "Pretendard", sans-serif;
+  background-color: #ffffff;
+  color: #222;
+}
+
+/* 제목 */
+.dual-test-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.dual-test-welcome {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3b70ff;
+  text-align: center;
+  margin-bottom: 28px;
+  background-color: #eef3ff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #d1e1ff;
+  box-shadow: 0 2px 6px rgba(60, 100, 255, 0.08);
+}
+
+.dual-test-question {
+  margin-bottom: 32px;
+}
+
+.dual-test-question-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* 좌우 배치 */
+.dual-test-options.dual {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* 카드 버튼 */
+.dual-test-option-btn {
+  flex: 1;
+  min-width: 140px;
+  max-width: 180px;
+  height: 250px;
+  padding: 20px 16px;
+  border-radius: 14px;
+  background-color: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+  white-space: normal;
+  word-break: keep-all;
+  margin: 30px 0 20px;
+}
+
+.dual-test-option-btn:active {
+  transform: scale(0.97);
+  background-color: #eaf1ff;
+  border-color: #8eaaff;
+  box-shadow: 0 4px 10px rgba(62, 130, 255, 0.12);
+}
+
+/* 프로그레스 바 */
+.dual-test-progress-wrapper {
+  height: 8px;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.dual-test-progress-bar {
+  height: 100%;
+  background-color: #3b70ff;
+  transition: width 0.3s ease;
+  border-radius: 6px;
+}
+
+/* 이전 버튼 영역 */
+.dual-test-nav-info {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+.prev-btn {
+  background: transparent;
+  color: #555;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.prev-btn:hover:not(:disabled) {
+  color: #3b70ff;
+}
+
+.prev-btn:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+/* 전체 영역 상하 여백 보강 */
+.dual-test-runner {
+  padding: 32px 16px 60px;
+}
+
+.dual-test-question {
+  height: 50vh;
+}

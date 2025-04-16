@@ -35,6 +35,8 @@ import DepressionResult from "./pages/Psychology/DepressionResult";
 import TravelResult from "./pages/Psychology/TravelResult";
 import StressResult from "./pages/Psychology/StressResult";
 import TestDescription from "./pages/Psychology/TestDescription";
+import DualOptionTestRunner from "./pages/Psychology/DualOptionTestRunner";
+import IdealTypeResult from "./pages/Psychology/IdealTypeResult";
 
 // Font Awesome 라이브러리 설정
 library.add(fas, far);
@@ -61,6 +63,12 @@ function App() {
           <Route path="/psychology" element={<Psychology />} />
           <Route path="/psychology/:testId" element={<TestDescription />} />
           <Route path="/psychology/:testId/run" element={<TestRunner />} />
+          {/* 2지 선다 */}
+          <Route
+            path="/psychology/:testId/dual-run"
+            element={<DualOptionTestRunner />}
+          />
+
           {/* 심리 결과 페이지  */}
           <Route path="/psychology/mbti/result" element={<MbtiResult />} />
           <Route path="/psychology/adhd/result" element={<ADHDResult />} />
@@ -70,6 +78,10 @@ function App() {
           />
           <Route path="/psychology/travel/result" element={<TravelResult />} />
           <Route path="/psychology/stress/result" element={<StressResult />} />
+          <Route
+            path="/psychology/idealType/result"
+            element={<IdealTypeResult />}
+          />
 
           {/* 결제 */}
           <Route path="payment" element={<Payment />} />

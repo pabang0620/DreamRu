@@ -627,4 +627,75 @@ export const psychologyTests = {
       },
     ],
   },
+  idealType: {
+    title: "이상형 유형 테스트",
+    color: "#ff99aa",
+    description: "당신의 연애 스타일을 알아보는 테스트입니다.",
+    questions: [
+      {
+        id: 1,
+        text: "소개팅에서 더 끌리는 사람은?",
+        options: [
+          { label: "다정하게 말 걸어주는 사람", value: "romantic" },
+          { label: "무심하지만 챙겨주는 사람", value: "tsundere" },
+        ],
+      },
+      {
+        id: 2,
+        text: "데이트할 때 선호하는 건?",
+        options: [
+          { label: "즉흥적인 드라이브", value: "passionate" },
+          { label: "계획된 알찬 코스", value: "stable" },
+        ],
+      },
+      {
+        id: 3,
+        text: "이성에게 더 끌리는 포인트는?",
+        options: [
+          { label: "대화 센스와 유머", value: "friend" },
+          { label: "진중한 성격과 듬직함", value: "stable" },
+        ],
+      },
+      {
+        id: 4,
+        text: "연애 스타일은?",
+        options: [
+          { label: "매일 연락하고 표현 자주함", value: "romantic" },
+          { label: "연락 간격이 자유로운 편", value: "independent" },
+        ],
+      },
+      {
+        id: 5,
+        text: "다툰 후 화해 방식은?",
+        options: [
+          { label: "먼저 다가가서 풀려고 함", value: "friend" },
+          { label: "시간을 두고 자연스럽게", value: "tsundere" },
+        ],
+      },
+      {
+        id: 6,
+        text: "사랑을 느끼는 순간은?",
+        options: [
+          { label: "작은 행동 하나에 감동할 때", value: "romantic" },
+          { label: "오래 함께할수록 더 편해질 때", value: "stable" },
+        ],
+      },
+      {
+        id: 7,
+        text: "연애 초반 스타일은?",
+        options: [
+          { label: "먼저 연락 많이 하고 리드", value: "passionate" },
+          { label: "상대가 다가올 때까지 기다림", value: "independent" },
+        ],
+      },
+      {
+        id: 8,
+        text: "이상적인 연애는?",
+        options: [
+          { label: "함께 성장하며 친구 같은 관계", value: "friend" },
+          { label: "서로 공간을 존중하는 관계", value: "independent" },
+        ],
+      },
+    ],
+  },
 };
