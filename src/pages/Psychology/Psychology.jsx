@@ -10,7 +10,7 @@ export default function Psychology() {
         {Object.entries(psychologyTests).map(([key, test]) => (
           <li key={key} className="psychology-item">
             <Link
-              to={`/psychology/${key}`}
+              to={`/psychology/${key}`} // 👈 이 경로는 이제 TestDescription을 연결
               className="psychology-link"
               style={{ borderColor: test.color }}
             >

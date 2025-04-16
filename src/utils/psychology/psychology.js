@@ -324,12 +324,307 @@ export const psychologyTests = {
           { label: "거의 항상 그렇다", score: 3 },
         ],
       },
-      
-
-
-
-
     ],
   },
-
+  depression: {
+    title: "우울증 자가 진단 (PHQ-9)",
+    color: "#e74c3c",
+    description:
+      "지난 2주 동안의 경험을 기반으로 현재 기분 상태를 확인해보세요.",
+    questions: [
+      {
+        id: 1,
+        text: "거의 매일 우울하거나 슬픈 기분이 들었다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 2,
+        text: "일이나 공부에 대한 흥미나 즐거움이 줄어들었다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 3,
+        text: "잠들기 어렵거나 자주 깼다, 혹은 너무 많이 잤다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 4,
+        text: "피곤하거나 기력이 없다고 느꼈다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 5,
+        text: "식욕이 없거나 과식을 했다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 6,
+        text: "자신을 실패자라고 느끼거나 자신과 가족을 실망시켰다고 느꼈다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 7,
+        text: "신문을 읽거나 TV를 보는 등 집중하기가 어려웠다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 8,
+        text: "다른 사람의 눈에 띄게 느리거나 너무 들떠 있었다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+      {
+        id: 9,
+        text: "자신을 해치거나 자살에 대한 생각을 한 적이 있다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "며칠 동안", score: 1 },
+          { label: "일주일 이상", score: 2 },
+          { label: "거의 매일", score: 3 },
+        ],
+      },
+    ],
+  },
+  travel: {
+    title: "여행 성격 검사",
+    color: "#a29bfe",
+    description: "여행 스타일을 테스트하고, 찰떡궁합 여행 친구도 알아보세요!",
+    questions: [
+      {
+        id: 1,
+        text: "여행은 미리 꼼꼼하게 계획을 짜야 마음이 놓인다.",
+        options: [
+          { label: "전혀 아니다", value: "spontaneous" },
+          { label: "아니다", value: "spontaneous" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "planner" },
+          { label: "매우 그렇다", value: "planner" },
+        ],
+      },
+      {
+        id: 2,
+        text: "낯선 장소에서 즉흥적으로 길을 걷는 게 좋다.",
+        options: [
+          { label: "전혀 아니다", value: "planner" },
+          { label: "아니다", value: "planner" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "spontaneous" },
+          { label: "매우 그렇다", value: "spontaneous" },
+        ],
+      },
+      {
+        id: 3,
+        text: "사람 많은 곳보다는 조용하고 한적한 곳이 좋다.",
+        options: [
+          { label: "전혀 아니다", value: "social" },
+          { label: "아니다", value: "social" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "quiet" },
+          { label: "매우 그렇다", value: "quiet" },
+        ],
+      },
+      {
+        id: 4,
+        text: "숙소보단 여행 스팟! 돌아다니는 게 우선이다.",
+        options: [
+          { label: "전혀 아니다", value: "relax" },
+          { label: "아니다", value: "relax" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "explorer" },
+          { label: "매우 그렇다", value: "explorer" },
+        ],
+      },
+      {
+        id: 5,
+        text: "여행은 누구랑 가느냐가 제일 중요하다.",
+        options: [
+          { label: "전혀 아니다", value: "solo" },
+          { label: "아니다", value: "solo" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "social" },
+          { label: "매우 그렇다", value: "social" },
+        ],
+      },
+      {
+        id: 6,
+        text: "최고의 여행은 노을 지는 바닷가에서 조용히 앉아있는 것이다.",
+        options: [
+          { label: "전혀 아니다", value: "explorer" },
+          { label: "아니다", value: "explorer" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "relax" },
+          { label: "매우 그렇다", value: "relax" },
+        ],
+      },
+      {
+        id: 7,
+        text: "여행 계획 짤 때 엑셀이나 지도 앱을 적극 활용한다.",
+        options: [
+          { label: "전혀 아니다", value: "spontaneous" },
+          { label: "아니다", value: "spontaneous" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "planner" },
+          { label: "매우 그렇다", value: "planner" },
+        ],
+      },
+      {
+        id: 8,
+        text: "맛집 투어는 빼놓을 수 없는 필수 코스다.",
+        options: [
+          { label: "전혀 아니다", value: "simple" },
+          { label: "아니다", value: "simple" },
+          { label: "보통이다", value: "" },
+          { label: "그렇다", value: "foodie" },
+          { label: "매우 그렇다", value: "foodie" },
+        ],
+      },
+    ],
+  },
+  stress: {
+    title: "스트레스 지수 검사",
+    color: "#ff6b6b",
+    description:
+      "최근 일주일 간의 상태를 체크해보세요. 스트레스 상태를 확인하고 적절한 조언을 받아보세요.",
+    questions: [
+      {
+        id: 1,
+        text: "짜증이 평소보다 자주 난다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 2,
+        text: "피곤한 느낌이 계속 든다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 3,
+        text: "일이나 공부에 집중이 잘 안 된다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 4,
+        text: "식욕이 줄거나 반대로 폭식하는 일이 생긴다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 5,
+        text: "무기력하거나 우울한 기분이 든다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 6,
+        text: "사소한 일에도 예민하게 반응하게 된다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 7,
+        text: "머리가 아프거나 소화가 잘 안 되는 등 신체 증상이 있다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 8,
+        text: "잠들기 어렵거나 수면이 자주 끊긴다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 9,
+        text: "일상에 의욕이 없고, 아무것도 하기 싫은 날이 많다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+      {
+        id: 10,
+        text: "내 감정을 주위 사람에게 잘 숨긴다.",
+        options: [
+          { label: "전혀 아니다", score: 0 },
+          { label: "가끔 그렇다", score: 1 },
+          { label: "자주 그렇다", score: 2 },
+          { label: "거의 항상 그렇다", score: 3 },
+        ],
+      },
+    ],
+  },
 };

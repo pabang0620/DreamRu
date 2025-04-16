@@ -1,5 +1,11 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { calculateADHDResult, calculateMBTIResult } from "../../utils/psychology/psychologyResultUtils";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import {
+  calculateADHDResult,
+  calculateDepressionResult,
+  calculateMBTIResult,
+  calculateStressResult,
+  calculateTravelResult,
+} from "../../utils/psychology/psychologyResultUtils";
 import { useState, useMemo } from "react";
 import { psychologyTests } from "../../utils/psychology/psychology";
 import "./TestRunner.css";
@@ -7,6 +13,9 @@ import "./TestRunner.css";
 export default function TestRunner() {
   const { testId } = useParams();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { name } = location.state || {}; // 이름 받기
+
   const test = psychologyTests[testId];
   const [answers, setAnswers] = useState({});
 
@@ -16,24 +25,23 @@ export default function TestRunner() {
     return Math.round((answered / total) * 100);
   }, [answers, test.questions.length]);
 
-  // 1. 답안 저장: 선택한 옵션의 index 저장
   const handleAnswer = (qId, optionIndex) => {
     setAnswers((prev) => ({ ...prev, [qId]: optionIndex }));
   };
 
-  // 3. 결과 계산 시 value 추출 방식 변경
   const handleSubmit = () => {
     const convertedAnswers = {};
 
-    // 선택값 정리 (MBTI는 value, ADHD는 score 기반)
     Object.entries(answers).forEach(([qId, selectedIndex]) => {
       const question = test.questions.find((q) => q.id === Number(qId));
       const option = question?.options?.[selectedIndex];
 
       if (testId === "mbti") {
         convertedAnswers[qId] = option?.value ?? "";
-      } else if (testId === "adhd") {
+      } else if (["adhd", "depression", "stress"].includes(testId)) {
         convertedAnswers[qId] = option?.score ?? 0;
+      } else if (testId === "travel") {
+        convertedAnswers[qId] = option?.value ?? "";
       }
     });
 
@@ -43,12 +51,17 @@ export default function TestRunner() {
       result = calculateMBTIResult(convertedAnswers, test.questions);
     } else if (testId === "adhd") {
       result = calculateADHDResult(convertedAnswers, test.questions);
+    } else if (testId === "depression") {
+      result = calculateDepressionResult(convertedAnswers);
+    } else if (testId === "travel") {
+      result = calculateTravelResult(convertedAnswers);
+    } else if (testId === "stress") {
+      result = calculateStressResult(convertedAnswers);
     }
 
-    // 자동으로 해당 경로로 이동
     if (result) {
       navigate(`/psychology/${testId}/result`, {
-        state: { result },
+        state: { result, name }, // 이름도 함께 전달
       });
     }
   };
@@ -59,12 +72,18 @@ export default function TestRunner() {
         <div className="test-progress-bar" style={{ width: `${progress}%` }} />
       </div>
       <h2 className="test-title">{test.title}</h2>
+      {name && (
+        <p className="test-welcome">
+          👇 아래 항목 중 {name}님의 <br /> 생각과 가장 가까운 답변을
+          선택해주세요!
+        </p>
+      )}
+
       <div className="test-questions">
         {test.questions.map((q) => (
           <div key={q.id} className="test-question">
             <p className="test-question-text">{q.text}</p>
             <div className="test-options">
-              {/* // 2. 버튼에 selected 클래스 조건 변경 */}
               {q.options.map((opt, i) => (
                 <button
                   key={i}
@@ -80,6 +99,7 @@ export default function TestRunner() {
           </div>
         ))}
       </div>
+
       <button className="test-submit-btn" onClick={handleSubmit}>
         결과 보기
       </button>

@@ -158,4 +158,122 @@ export function calculateMBTIResult(answers, questions) {
     }
   }
 
+  // -----------------------------------------------------------------------------------------------------------------
+  // 우울증 자가 진단 결과 계산식
+  export const calculateDepressionResult = (answers) => {
+    const totalScore = Object.values(answers).reduce((acc, score) => acc + score, 0);
   
+    let level = "";
+    if (totalScore <= 4) level = "정상 범위";
+    else if (totalScore <= 9) level = "경미한 우울";
+    else if (totalScore <= 14) level = "중등도 우울";
+    else if (totalScore <= 19) level = "중등도~중증 우울";
+    else level = "심각한 우울";
+  
+    return {
+      totalScore,
+      level,
+      comment: `총 점수는 ${totalScore}점이며, 이는 "${level}" 수준으로 해석됩니다.`,
+    };
+  };
+  
+  // -----------------------------------------------------------------------------------------------------------------
+  // 여행 성향 결과 계산식
+  export const calculateTravelResult = (answers) => {
+    const scoreMap = {};
+  
+    Object.values(answers).forEach((type) => {
+      if (!type) return;
+      scoreMap[type] = (scoreMap[type] || 0) + 1;
+    });
+  
+    const topType = Object.entries(scoreMap).sort((a, b) => b[1] - a[1])[0]?.[0];
+  
+    return travelResultMap[topType] || {
+      type: "무난러",
+      nickname: "무난하게 다 잘 어울리는 여행둥이 🙂",
+      message: "모든 유형이 고르게 분포된 당신! 누구와도 편하게 여행할 수 있어요.",
+      compatible: "누구와도 잘 맞음 💫",
+    };
+  };
+  
+  export const travelResultMap = {
+    planner: {
+      type: "계획요정",
+      nickname: "계획에 집착하는 꼼꼼 여행둥이 📅",
+      message: "계획표 없이는 불안한 당신! 체크리스트와 스케줄 관리에 진심이네요.",
+      compatible: "힐링러, 맛집러",
+    },
+    spontaneous: {
+      type: "즉흥러",
+      nickname: "심술맞은 여행둥이 😤✈️",
+      message: "느낌 오는 대로 움직이고, 발길 닿는 대로 머무는 여행이 최고!",
+      compatible: "모험왕, 혼행러",
+    },
+    explorer: {
+      type: "모험왕",
+      nickname: "열정 넘치는 모험 여행둥이 🧭",
+      message: "한 곳에 오래 머무는 건 답답하죠! 체험과 활동 위주의 여행을 좋아하는 당신.",
+      compatible: "즉흥러, 맛집러",
+    },
+    relax: {
+      type: "힐링러",
+      nickname: "물멍 힐링 여행둥이 🌊",
+      message: "숙소에서 뒹굴뒹굴, 조용한 풍경이 최고의 힐링이죠.",
+      compatible: "계획요정, 맛집러",
+    },
+    social: {
+      type: "단체파",
+      nickname: "친화력 만렙 여행둥이 🧑‍🤝‍🧑",
+      message: "여행은 누구와 함께하느냐가 제일 중요! 분위기 메이커 역할을 톡톡히 하네요!",
+      compatible: "맛집러, 모험왕",
+    },
+    solo: {
+      type: "혼행러",
+      nickname: "조용하지만 강한 혼행 여행둥이 🧍‍♂️",
+      message: "혼자만의 시간이 더 소중한 당신. 즉흥러나 힐링러와도 은근히 잘 맞아요.",
+      compatible: "힐링러, 즉흥러",
+    },
+    foodie: {
+      type: "맛집러",
+      nickname: "식도락 여행둥이 🍜",
+      message: "여행의 하이라이트는 식사! 숨은 맛집을 발굴하는 당신.",
+      compatible: "힐링러, 계획요정",
+    },
+    simple: {
+      type: "심플러",
+      nickname: "깔끔한 심플 여행둥이 🧳",
+      message: "복잡한 계획보다는 심플한 루트가 최고. 가볍고 효율적인 여행을 지향하는 스타일이에요.",
+      compatible: "혼행러, 힐링러",
+    },
+  };
+   
+  // -----------------------------------------------------------------------------------------------------------------
+  // 스트레스 자가 진단 결과 계산식
+    export const calculateStressResult = (answers) => {
+      const total = Object.values(answers).reduce((sum, score) => sum + score, 0);
+    
+      let level = "";
+      let message = "";
+    
+      if (total <= 7) {
+        level = "낮음";
+        message = "스트레스가 거의 없는 편이에요! 지금처럼 안정된 일상을 잘 유지해보세요 😊";
+      } else if (total <= 15) {
+        level = "보통";
+        message = "약간의 스트레스가 있지만 일상에 크게 문제되진 않아요. 가볍게 몸과 마음을 풀어보는 시간을 가져보세요.";
+      } else if (total <= 23) {
+        level = "높음";
+        message = "스트레스 신호가 감지되고 있어요. 잠시 멈추고 나를 돌아보는 시간이 필요할 수도 있어요.";
+      } else {
+        level = "매우 높음";
+        message = "지속적인 스트레스 상태일 가능성이 높아요. 휴식, 대화, 전문가 상담을 고려해보는 것을 추천드려요.";
+      }
+    
+      return {
+        totalScore: total,
+        level,
+        message,
+      };
+    };
+    
