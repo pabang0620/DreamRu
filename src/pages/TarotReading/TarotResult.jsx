@@ -121,7 +121,13 @@ const tarotDataMap = {
               {info ? (
                 <>
                   <h4>{info.title}</h4>
-                  <p>{info.meaning}</p>
+                  <p
+                    style={{
+                      width: "66%",
+                    }}
+                  >
+                    {info.meaning}
+                  </p>
                 </>
               ) : (
                 <p>카드 해석을 찾을 수 없습니다.</p>

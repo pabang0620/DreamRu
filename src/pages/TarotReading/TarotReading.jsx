@@ -163,7 +163,7 @@ const TarotReading = ({ cardColor }) => {
           <p className="sub-text">카드를 눌러 선택해주세요.</p>
         </div>
       ) : (
-        <div className="instruction result-message">
+        <div className="instruction taro-end-message">
           <p>세 장의 카드를 모두 선택하셨습니다.</p>
           <p className="sub-text">
             이제 아래에 나타난 카드를 통해 타로 리딩을 확인해보세요.
