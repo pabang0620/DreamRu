@@ -116,3 +116,11 @@
   opacity: 1;
   padding-top: 8px;
 }
+
+.result-user {
+  text-align: center;
+  font-size: 1.1rem;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: 600;
+}

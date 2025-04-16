@@ -149,3 +149,11 @@
 .modal-close-button:hover {
   background-color: #e76f2b;
 }
+
+.result-user {
+  text-align: center;
+  font-size: 1.1rem;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: 600;
+}

@@ -9,6 +9,7 @@ import { useMemo, useState } from "react";
 export default function MbtiResult() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { result, name } = location.state || {};
 
   const [revealed, setRevealed] = useState({
     fortune: false,
@@ -27,8 +28,6 @@ export default function MbtiResult() {
     const arr = mbtiExtraInfo.randomWarnings;
     return arr[Math.floor(Math.random() * arr.length)];
   }, []);
-
-  const result = location.state?.result;
 
   if (!result) {
     return (
@@ -50,7 +49,11 @@ export default function MbtiResult() {
   return (
     <div className="result-page">
       <h2 className="result-title">당신의 MBTI 결과는</h2>
-
+      {name && (
+        <p className="result-user">
+          <strong>{name}</strong>님의 검사 결과입니다.
+        </p>
+      )}
       <img
         src={`/Images/psychology/result/mbti/${result}.png`}
         alt={`${result} 결과 이미지`}

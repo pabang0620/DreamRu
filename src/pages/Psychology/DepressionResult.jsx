@@ -4,7 +4,7 @@ import "./ADHDResult.css"; // 스타일 재사용
 export default function DepressionResult() {
   const location = useLocation();
   const navigate = useNavigate();
-  const result = location.state?.result;
+  const { result, name } = location.state || {};
 
   if (!result) {
     return (
@@ -40,7 +40,11 @@ export default function DepressionResult() {
   return (
     <div className="result-page">
       <h2 className="result-title">우울증 자가 진단 결과</h2>
-
+      {name && (
+        <p className="result-user">
+          <strong>{name}</strong>님의 검사 결과입니다.
+        </p>
+      )}
       <img
         src={`/Images/psychology/result/depression/${selectedImage}`}
         alt={`${result.level} 이미지`}

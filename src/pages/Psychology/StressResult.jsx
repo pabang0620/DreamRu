@@ -4,13 +4,16 @@ import "./StressResult.css";
 export default function StressResult() {
   const location = useLocation();
   const navigate = useNavigate();
-  const result = location.state?.result;
+  const { result, name } = location.state || {};
 
   if (!result) {
     return (
       <div className="result-page">
         <h2 className="result-error-title">결과 정보가 없습니다.</h2>
-        <button className="result-button" onClick={() => navigate("/psychology")}>
+        <button
+          className="result-button"
+          onClick={() => navigate("/psychology")}
+        >
           돌아가기
         </button>
       </div>
@@ -36,7 +39,11 @@ export default function StressResult() {
   return (
     <div className="result-page">
       <h2 className="result-title">스트레스 지수 검사 결과</h2>
-
+      {name && (
+        <p className="result-user">
+          <strong>{name}</strong>님의 검사 결과입니다.
+        </p>
+      )}
       <img
         src={`/Images/psychology/result/stress/${selectedImage}`}
         alt={`${result.level} 이미지`}
@@ -60,7 +67,10 @@ export default function StressResult() {
           </ul>
         </div>
 
-        <button className="result-button" onClick={() => navigate("/psychology")}>
+        <button
+          className="result-button"
+          onClick={() => navigate("/psychology")}
+        >
           테스트 목록으로 돌아가기
         </button>
       </div>
