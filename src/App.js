@@ -19,6 +19,7 @@ import TarotList from "./pages/Tarot/TarotList";
 import TarotDetail from "./pages/Tarot/TarotDetail";
 import Payment from "./pages/Payment/Payment";
 import TarotReading from "./pages/TarotReading/TarotReading";
+import TarotResultPage from "./pages/TarotReading/TarotResultPage";
 
 // Admin Pages
 import AdminConsultants from "./pages/Admin/Consultants/AdminConsultants";
@@ -58,6 +59,7 @@ function App() {
           <Route path="tarot" element={<TarotList />} />
           <Route path="tarot/:id" element={<TarotDetail />} />
           <Route path="tarot-reading/:id" element={<TarotReading />} />
+          <Route path="tarot-reading/:id/result" element={<TarotResultPage />} /> // 추가
 
           {/* 심리테스트 */}
           <Route path="/psychology" element={<Psychology />} />

@@ -91,7 +91,15 @@ const tarotDataMap = {
   };
 
 
-  const TarotResult = ({ cards, type }) => {
+  const tarotTypeTitleMap = {
+  romance: "연애 타로 결과",
+  health: "건강 타로 결과",
+  job: "직업 타로 결과",
+  study: "학업 타로 결과",
+  wealth: "재물 타로 결과",
+};
+
+const TarotResult = ({ cards, type }) => {
     const data = tarotDataMap[type] || tarotDataMap["romance"]; // 기본 fallback
   
     const getCardInfo = (card) => {
@@ -112,6 +120,8 @@ const tarotDataMap = {
   
     return (
       <div className="tarot-result-wrapper">
+        <h1 className="tarot-result-title">{tarotTypeTitleMap[type] || "타로 결과"}</h1>
+        <p className="tarot-result-desc">선택한 타로 카드의 해석 결과입니다.</p>
         {cards.map((card, index) => {
           const info = getCardInfo(card);
           return (

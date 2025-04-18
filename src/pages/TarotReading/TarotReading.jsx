@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./TarotReading.css";
-import TarotResult from "./TarotResult";
+// import TarotResult from "./TarotResult";
 
 const TarotReading = ({ cardColor }) => {
+  const navigate = useNavigate();
   const location = useLocation();
   const { product } = location.state || {};
 
@@ -141,6 +142,25 @@ const TarotReading = ({ cardColor }) => {
     };
   }, [cards, currentPage]);
 
+
+useEffect(() => {
+  if (randomCards.length === 3) {
+    const timeout = setTimeout(() => {
+      navigate(`/tarot-reading/${location.state?.product?.id || 'result'}/result`, {
+        state: {
+          cards: randomCards,
+          type: readingType,
+          fromTarotReading: true,
+        },
+      });
+    }, 2000); // 2초 후 이동
+
+    return () => clearTimeout(timeout); // cleanup
+  }
+}, [randomCards, navigate, location.state?.product?.id, readingType]);
+
+
+
   // 이미지 경로
   const backImageSrc = `${process.env.PUBLIC_URL}/Images/tarocard/${
     cardColor || "blue.png"
@@ -272,9 +292,7 @@ const TarotReading = ({ cardColor }) => {
           </div>
         ))}
       </div>
-      {randomCards.length === 3 && (
-        <TarotResult cards={randomCards} type={readingType} />
-      )}
+  
     </div>
   );
 };
