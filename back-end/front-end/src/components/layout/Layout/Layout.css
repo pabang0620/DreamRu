@@ -1,13 +1,16 @@
 .layout {
-  padding-top: var(--top-nav-height);
   padding-bottom: var(--bottom-nav-height);
   min-height: 100vh;
   background-color: var(--background-color);
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
 .layout-content {
-  max-width: 480px;
-  margin: 0 auto;
+  width: 100%;
   background-color: var(--white);
   min-height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height));
+  padding: 60px 0;
 }

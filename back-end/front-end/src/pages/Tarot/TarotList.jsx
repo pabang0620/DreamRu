@@ -47,7 +47,7 @@ const TarotList = () => {
 
   return (
     <div className="tarot-list-container">
-      <h1 className="tarot-title">타로 상담</h1>
+      <h1 className="tarot-title">타로 센터</h1>
       <div className="tarot-products">
         {products.map((product) => (
           <div

@@ -1,45 +1,123 @@
 .top-nav {
-  position: fixed;
+  /* position: fixed;
   top: 0;
-  left: 0;
-  right: 0;
-  height: var(--top-nav-height);
-  background-color: var(--white);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  padding: 0 var(--spacing-md);
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 10; */
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
 }
 
 .top-nav-content {
-  max-width: 480px;
-  margin: 0 auto;
-  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  height: 65px;
+  align-items: center;
+  padding: 0 8%;
+  background: #fff;
 }
 
-.nav-menu {
+.top-nav-content .logo {
+  height: 45%;
+  width: auto;
+}
+
+/* 햄버거 메뉴 */
+.menu-toggle {
   display: flex;
-  gap: var(--spacing-md);
+  flex-direction: column;
+  justify-content: center;
+  width: 40px;
+  height: 45px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  align-items: flex-end;
+  z-index: 11;
+  transition: 0.3s;
+}
+
+.menu-bar {
+  width: 65%;
+  height: 4px;
+  background: #7d7d7d;
+  margin: 2.5px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* 햄버거 → X 애니메이션 */
+.menu-toggle.open .menu-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.open .menu-bar:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.open .menu-bar:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
+/* 사이드 메뉴 스타일 */
+.nav-menu {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  align-items: center;
+  /* border: 1px solid red; */
 }
 
 .nav-menu::-webkit-scrollbar {
   display: none;
 }
+.side-menu {
+  position: absolute;
+  top: 0;
+  right: -70%;
+  width: 70%;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15% 8% 0 5%;
+  transition: right 0.3s;
+  z-index: 11;
+}
+
+.side-menu.open {
+  right: 0;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.08);
+}
 
 .nav-item {
   white-space: nowrap;
-  padding: var(--spacing-xs) var(--spacing-sm);
   color: var(--gray-dark);
-  font-size: var(--font-sm);
+  font-size: 14px;
+  width: 100%;
+  padding: 5% 3%;
 }
 
 .nav-item.active {
-  color: var(--primary-color);
+  color: #560073;
   font-weight: bold;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 9;
 }

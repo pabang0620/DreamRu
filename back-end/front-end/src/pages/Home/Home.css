@@ -1,64 +1,156 @@
 .home-container {
-  padding-bottom: var(--spacing-xl);
+  padding: 0 10% 20%;
 }
 
-.banner-section {
-  margin: -var(--spacing-md) -var(--spacing-md) var(--spacing-md);
-  height: 200px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* 배너 */
+
+.home-container .banner-section {
+  width: 100%;
+  height: 350px;
   position: relative;
-  overflow: hidden;
+  padding-top: 8%;
 }
 
-.categories-grid {
+.home-container .banner-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.home-container .banner-slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  opacity: 0;
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s;
+  display: block;
+  z-index: 1;
+  background-color: antiquewhite;
+  border-radius: 15px;
+}
+
+.home-container .banner-slide.active {
+  left: 0;
+  opacity: 1;
+  z-index: 2;
+}
+
+.home-container .banner-slide.prev {
+  left: -105%;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.home-container .banner-slide.next {
+  left: 105%;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.home-container .banner-text {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  color: #5c5c5c;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 좌우 화살표 버튼 */
+.home-container .banner-nav {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  z-index: 4;
+  width: 100%;
+  color: #000;
+  font-size: 15px;
+  display: flex;
+  gap: 5%;
+  justify-content: flex-end;
+  align-items: center;
+}
+.home-container .banner-nav p {
+  background-color: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.home-container .banner-nav .banner-arrow {
+  border: none;
+  font-size: 15px;
+  color: #fff;
+}
+.home-container .banner-nav .banner-arrow.left {
+  left: 16px;
+}
+.home-container .banner-nav .banner-arrow.right {
+  right: 16px;
+}
+
+/* 카테고리 */
+.home-container .categories-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
+  padding: 20% 0;
 }
 
-.category-card {
-  background-color: var(--white);
-  border-radius: var(--border-radius-lg);
-  padding: var(--spacing-lg);
+.home-container .categories-grid .category-card {
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.category-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.home-container .categories-grid .imgBox {
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  width: 70px;
+  background-color: whitesmoke;
 }
 
-.category-icon {
-  font-size: 2.5rem;
-  margin-bottom: var(--spacing-md);
-  transition: transform 0.3s ease;
+.home-container .categories-grid .category-card h3 {
+  font-size: 13px;
+  margin-top: 10px;
 }
 
-.category-card:hover .category-icon {
-  transform: scale(1.1);
-}
-
-.featured-section {
+/* 인기상품 */
+.home-container .featured-section {
   margin-bottom: var(--spacing-xl);
 }
 
-.section-title {
-  font-size: var(--font-lg);
+.home-container .featured-section .section-title {
+  font-size: 25px;
   font-weight: bold;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 8%;
 }
-
-.products-grid {
+.home-container .featured-section .products-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--spacing-md);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10%;
+}
+.home-container .featured-section .imgBox {
+  width: 100%;
+  background-color: #e6e6e6;
+  aspect-ratio: 2/0.8;
+  border-radius: 15px;
+}
+.home-container .featured-section h3 {
+  padding-top: 5%;
+  font-size: 16px;
+}
+.home-container .featured-section p.description {
+  padding-top: 1%;
+  font-size: 13px;
+  color: #a6a6a6;
+}
+.home-container .featured-section p.price {
+  padding-top: 2%;
+  font-size: 14px;
 }

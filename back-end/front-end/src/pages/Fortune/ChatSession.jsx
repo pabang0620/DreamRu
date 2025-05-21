@@ -230,13 +230,13 @@ const ChatSession = () => {
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
             />
             <div className="chat-question-inline-count">
-              남은 질문 {MAX_QUESTIONS - questionCount}회
+              남은 질문 {MAX_QUESTIONS - questionCount} / {MAX_QUESTIONS}회
             </div>
           </div>
           <button onClick={handleSend}>전송</button>
-          <div className="chat-question-count">
+          {/* <div className="chat-question-count">
             질문 가능 횟수: {MAX_QUESTIONS - questionCount} / {MAX_QUESTIONS}
-          </div>
+          </div> */}
         </div>
       )}
 
