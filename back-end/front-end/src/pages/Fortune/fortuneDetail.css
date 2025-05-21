@@ -1,0 +1,103 @@
+/* 레이아웃 전체 */
+.fortune-detail-container .fortune-detail-wrapper {
+  padding: 24px 16px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  font-family: "Pretendard", sans-serif;
+}
+
+/* 제목 영역 */
+.fortune-detail-container .fortune-detail-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #f16c4f; /* primary color */
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+/* 선생님 박스 */
+.fortune-detail-container .fortune-detail-teacher {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 선생님 이미지 */
+.fortune-detail-container .fortune-detail-teacher-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* 선생님 정보 */
+.fortune-detail-container .fortune-detail-teacher-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.fortune-detail-container .fortune-detail-teacher-info h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.fortune-detail-container .fortune-detail-teacher-info p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* 운세 설명 */
+.fortune-detail-container .fortune-detail-description {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  background-color: #fefefe;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px #eee;
+  white-space: pre-wrap;
+}
+
+/* 상담 시작 버튼 */
+.fortune-detail-container .fortune-detail-button {
+  background-color: #f16c4f;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  align-self: center;
+  width: 100%;
+  max-width: 320px;
+  transition: background-color 0.2s ease;
+}
+
+.fortune-detail-container .fortune-detail-button:hover {
+  background-color: #d5533b;
+}
+
+.fortune-detail-container .fortune-detail-button:active {
+  background-color: #b8442a;
+}
+
+/* 로딩 텍스트 */
+.fortune-detail-container .fortune-detail-loading {
+  text-align: center;
+  font-size: 1rem;
+  color: #888;
+  margin-top: 40px;
+}

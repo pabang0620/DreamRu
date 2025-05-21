@@ -1,0 +1,125 @@
+.test-runner {
+  margin: 24px auto;
+  padding: 60px 20px 20px; /* ← 상단 padding: 60px (기존보다 +20px) */
+  border-radius: 14px;
+  font-family: "Pretendard", sans-serif;
+  font-size: 0.95rem;
+  background-color: #ffffff;
+}
+
+.test-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  text-align: center;
+  color: #222;
+}
+
+.test-question {
+  margin-bottom: 32px;
+  background-color: #f6f6f6;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.test-question-text {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #222;
+}
+
+.test-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.test-option-btn {
+  flex: 1;
+  padding: 10px 0;
+  background-color: #e4e4e4;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.85rem; /* 📱 폰트 작게 */
+  text-align: center;
+  cursor: pointer;
+  color: #333;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.test-option-btn.selected {
+  background-color: #2e86de;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px #2e86de33;
+  transform: scale(1.02);
+}
+
+.test-submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #2e86de;
+  border: none;
+  border-radius: 10px;
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.test-submit-btn:hover {
+  background-color: #1c5fa8;
+}
+
+.test-progress-wrapper {
+  position: fixed; /* ← 고정으로 변경 */
+  top: 55px;
+  left: 0;
+  z-index: 999;
+  height: 8px;
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.test-progress-bar {
+  height: 100%;
+  background-color: #2e86de;
+  transition: width 0.3s ease;
+}
+
+
+/* 이름 나와있는곳 스타일  */
+.test-welcome {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2e86de;
+  text-align: center;
+  margin-bottom: 32px;
+  background-color: #eaf4ff;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid #d0e8ff;
+  box-shadow: 0 3px 8px rgba(0, 123, 255, 0.05);
+  animation: fadeIn 0.4s ease-in-out;
+  transition: all 0.3s ease;
+}
+.test-welcome:hover {
+  background-color: #d7ecff;
+  transform: scale(1.02);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

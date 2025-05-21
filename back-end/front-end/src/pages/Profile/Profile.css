@@ -1,0 +1,108 @@
+.profile-container {
+  padding-bottom: var(--spacing-xl);
+}
+
+.profile-header {
+  margin: -var(--spacing-md) -var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--white);
+  text-align: center;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--gray-light);
+  margin: 0 auto var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-avatar-icon {
+  font-size: 48px;
+  color: var(--gray-dark);
+}
+
+.profile-name {
+  font-size: var(--font-lg);
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.profile-email {
+  color: var(--gray-dark);
+  font-size: var(--font-sm);
+}
+
+.profile-sections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.profile-section {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.section-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--gray-light);
+  font-weight: bold;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  padding: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--gray-light);
+  cursor: pointer;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.menu-icon {
+  color: var(--gray-dark);
+  width: 20px;
+}
+
+.menu-text {
+  color: var(--text-color);
+}
+
+.menu-right {
+  color: var(--gray-dark);
+}
+
+.logout-button {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+  text-align: center;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: var(--gray-medium);
+  color: var(--white);
+}

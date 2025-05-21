@@ -1,0 +1,81 @@
+.tarot-list-container {
+  padding: var(--spacing-md);
+}
+
+.tarot-list-container .tarot-title {
+  font-size: var(--font-xl);
+  font-weight: bold;
+  margin: 5% 0 7%;
+  text-align: center;
+}
+
+.tarot-list-container .tarot-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.tarot-list-container .tarot-product-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.tarot-list-container .tarot-product-card:hover {
+  transform: translateY(-4px);
+}
+
+.tarot-list-container .product-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background-color: var(--gray-light);
+}
+
+.tarot-list-container .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarot-list-container .image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-xl);
+  color: var(--gray-dark);
+}
+
+.tarot-list-container .product-info {
+  padding: 5%;
+}
+
+.tarot-list-container .product-info h2 {
+  font-size: var(--font-lg);
+}
+.tarot-list-container .product-info .price {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.tarot-list-container .product-info .price p {
+  color: #b9b9b9;
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: line-through;
+}
+
+.tarot-list-container .product-info .price span {
+  font-weight: bold;
+  font-size: 13.5px;
+  padding: 3px 8px 5px 10px;
+  background-color: rgba(107, 78, 255, 0.2);
+  border-radius: 5px;
+}

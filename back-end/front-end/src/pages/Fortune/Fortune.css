@@ -1,0 +1,69 @@
+.fortune-container {
+  padding-bottom: var(--spacing-xl);
+}
+
+.fortune-container .fortune-header {
+  margin: -var(--spacing-md) -var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+}
+
+.fortune-container .fortune-header h1 {
+  margin-bottom: var(--spacing-sm);
+}
+
+.fortune-container .fortune-description {
+  font-size: var(--font-sm);
+  opacity: 0.9;
+}
+
+.fortune-container .fortune-services {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.fortune-container .fortune-service-card {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.fortune-container .fortune-service-card:hover {
+  transform: translateX(4px);
+}
+
+.fortune-container .service-icon {
+  font-size: var(--font-xl);
+  color: var(--primary-color);
+  width: 48px;
+  text-align: center;
+}
+
+.fortune-container .service-content {
+  flex: 1;
+}
+
+.fortune-container .service-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.fortune-container .service-description {
+  font-size: var(--font-sm);
+  color: var(--gray-dark);
+}
+
+.fortune-container .service-price {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-top: var(--spacing-xs);
+}

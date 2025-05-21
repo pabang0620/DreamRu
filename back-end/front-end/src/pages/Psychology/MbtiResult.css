@@ -1,0 +1,126 @@
+.result-page {
+  font-family: 'Pretendard', sans-serif;
+  background-color: #fffaf4;
+  color: #333;
+  min-height: 100vh;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #444;
+}
+
+
+
+.result-description {
+  width: 80%;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+  color: #444;
+  padding: 0 8px;
+  margin-bottom: 32px;
+}
+
+.result-button {
+  padding: 14px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #2e86de;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.result-button:hover {
+  background-color: #1c5fa8;
+}
+
+.result-error-title {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+.result-mbti-image {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 24px;
+  display: block;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* 추가정보 */
+.mbti-extra-box {
+  width: 85%;
+  margin: 0 auto 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reveal-card {
+  background-color: #fff5f0;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-left: 6px solid #f78da7; /* 연핑크 계열 */
+  position: relative;
+}
+
+.reveal-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: #c63c6c; /* 밝은 체리핑크 */
+}
+
+.reveal-card p {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+  padding-top: 0;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.reveal-card.open {
+  background-color: #fff0f5;
+}
+
+.reveal-card.open p {
+  max-height: 200px;
+  opacity: 1;
+  padding-top: 8px;
+}
+.reveal-card.open {
+  background-color: #fff0f5;
+}
+
+.reveal-card.open p {
+  max-height: 200px;
+  opacity: 1;
+  padding-top: 8px;
+}
+
+.result-user {
+  text-align: center;
+  font-size: 1.1rem;
+  color: black;
+  margin-bottom: 20px;
+  font-weight: 600;
+}

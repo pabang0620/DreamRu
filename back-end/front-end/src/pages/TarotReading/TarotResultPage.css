@@ -1,0 +1,75 @@
+/* TarotResultPage.css - 신비롭고 몽환적인 타로 결과 스타일 */
+
+.tarot-result-page-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7e9ff 0%, #c7d2fe 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 48px;
+  animation: tarotFadeIn 1s;
+}
+
+@keyframes tarotFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tarot-result-title {
+  font-family: "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #7c3aed;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-shadow: 0 2px 8px #e9d5ff, 0 1px 0 #fff;
+  text-align: center;
+}
+
+.tarot-result-desc {
+  font-size: 1.08rem;
+  color: #7c3aed;
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+.tarot-result-cards-area {
+  display: grid;
+  gap: 36px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 18px 40px 18px;
+}
+
+/* 카드별 결과 카드 스타일은 TarotResult.css와 조화롭게 */
+
+.tarot-result-back-btn {
+  margin-top: 32px;
+  padding: 10px 28px;
+  background: linear-gradient(90deg, #a5b4fc 0%, #c4b5fd 100%);
+  border: none;
+  border-radius: 22px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.tarot-result-back-btn:hover {
+  background: linear-gradient(90deg, #c4b5fd 0%, #a5b4fc 100%);
+  transform: scale(1.04);
+}
+
+/* Spinner(로딩)과 조화롭게 오버레이 효과 */
+.spinner-overlay {
+  background: linear-gradient(135deg, #e0e7ff 60%, #f7e9ff 100%);
+}

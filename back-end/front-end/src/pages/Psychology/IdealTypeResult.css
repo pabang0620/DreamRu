@@ -1,0 +1,188 @@
+.ideal-result-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Pretendard', sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.ideal-result-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.ideal-result-card {
+  border: 2px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 24px;
+  background-color: #fafafa;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.ideal-result-image {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.ideal-result-type {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.ideal-result-description {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* 매칭 카드 */
+.ideal-match-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.ideal-type-card {
+  width: 44%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.ideal-type-label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.ideal-type-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.ideal-type-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.ideal-type-reason {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* 카드 선택 리스트 */
+.ideal-card-list-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 30px 0 12px;
+  text-align: center;
+}
+
+.ideal-card-scroll-wrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 12px;
+  padding: 10px 0;
+  margin-bottom: 24px;
+}
+
+.ideal-card-button {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.ideal-card-button.active {
+  background-color: #ffe6ec;
+  border-color: #ff7e9f;
+  color: #ff3d6b;
+  font-weight: bold;
+}
+
+.ideal-result-user {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* 선택된 카드 미리보기 */
+.ideal-card-detail {
+  text-align: center;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #fcfcfc;
+}
+
+.ideal-card-detail-image {
+  width: 140px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+
+.ideal-result-error {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #d33;
+  margin-bottom: 20px;
+}
+
+.ideal-button-group {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.ideal-share-button,
+.ideal-result-button {
+  flex: 1 1 160px;
+  max-width: 190px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.ideal-share-button {
+  background-color: #ffb6c1;
+  color: white;
+}
+
+.ideal-share-button:hover {
+  background-color: #ff92a6;
+}
+
+.ideal-result-button {
+  background-color: #5562ea;
+  color: white;
+}
+
+.ideal-result-button:hover {
+  background-color: #3e47c7;
+}

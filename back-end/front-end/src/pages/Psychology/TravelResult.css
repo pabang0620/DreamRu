@@ -1,0 +1,204 @@
+.travel-result-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  font-family: 'Pretendard', sans-serif;
+  color: #333;
+  background-color: #fff;
+}
+
+.travel-result-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.travel-result-user {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.travel-result-card {
+  border: 2px solid #f0f0f0;
+  border-radius: 16px;
+  padding: 24px;
+  background-color: #fafafa;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.travel-result-type {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.travel-result-nickname {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #666;
+}
+
+.travel-result-message {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.travel-recommend-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.travel-type-card {
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.travel-type-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.travel-type-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.travel-type-subtype {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.travel-type-nickname {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.travel-result-button {
+  display: block;
+  margin: 0 auto;
+  background-color: #5562ea;
+  color: white;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.travel-result-button:hover {
+  background-color: #3e47c7;
+}
+
+.travel-result-error-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #d33;
+  margin-bottom: 20px;
+}
+
+.travel-result-main-image {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.travel-card-list-title {
+  font-size: 1.2rem;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.travel-card-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.travel-card-button {
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 20px;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.travel-card-button.active {
+  background-color: #e1ecff;
+  border-color: #4a90e2;
+  font-weight: bold;
+}
+
+.travel-card-detail {
+  text-align: center;
+  background-color: #f4f8ff;
+  border: 1px solid #d3e6ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.travel-button-group {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.travel-share-button,
+.travel-result-button {
+  flex: 1 1 160px;
+  max-width: 200px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.travel-share-button {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.travel-share-button:hover {
+  background-color: #3677c9;
+}
+
+.travel-card-detail-image {
+  width: 100%;
+  max-width: 220px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}

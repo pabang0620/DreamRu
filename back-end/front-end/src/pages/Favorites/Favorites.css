@@ -1,0 +1,102 @@
+.favorites-container {
+  padding-bottom: var(--spacing-xl);
+}
+
+.favorites-header {
+  margin: -var(--spacing-md) -var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-md);
+  background-color: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  text-align: center;
+}
+
+.favorites-header h1 {
+  margin-bottom: var(--spacing-xs);
+  color: var(--text-color);
+}
+
+.favorites-count {
+  color: var(--gray-dark);
+  font-size: var(--font-sm);
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  color: var(--gray-dark);
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: var(--gray-medium);
+  margin-bottom: var(--spacing-md);
+}
+
+.favorites-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.favorite-item {
+  background-color: var(--white);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-md);
+  display: flex;
+  gap: var(--spacing-md);
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-image {
+  width: 100px;
+  height: 100px;
+  background-color: var(--gray-light);
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favorite-content {
+  flex: 1;
+}
+
+.favorite-title {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.favorite-category {
+  color: var(--gray-dark);
+  font-size: var(--font-sm);
+  margin-bottom: var(--spacing-xs);
+}
+
+.favorite-price {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.action-button {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-sm);
+  cursor: pointer;
+}
+
+.reserve-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.remove-button {
+  background-color: var(--gray-light);
+  color: var(--gray-dark);
+}

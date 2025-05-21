@@ -1,0 +1,115 @@
+.result-page {
+    font-family: 'Pretendard', sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #fff9f3;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .result-title {
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 20px 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .result-image-full {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 24px;
+  }
+  
+  .result-content {
+    padding: 0 20px 40px;
+    flex: 1;
+  }
+  
+  .result-score {
+    font-size: 2.2rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #2e86de;
+  }
+  
+  .result-level {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+  
+  .result-level span {
+    font-weight: bold;
+    color: #f39c12;
+  }
+  
+  .result-message {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+  
+  .result-range-info {
+    background-color: #fff2df;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .result-range-info .info-title {
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .result-range-info ul {
+    padding-left: 16px;
+    line-height: 1.6;
+  }
+  
+  .result-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #2e86de;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .result-button:hover {
+    background-color: #1c5fa8;
+  }
+  
+  .result-error-title {
+    padding: 40px 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #e74c3c;
+  }
+
+  li {
+    list-style: none;
+  }
+  
+
+  .result-user {
+    text-align: center;
+    font-size: 1.1rem;
+    color: black;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
